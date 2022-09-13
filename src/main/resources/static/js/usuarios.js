@@ -21,6 +21,8 @@ async function cargarUsuarios() {
       usuario.id +
       ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
 
+    usuario.telefono = usuario.telefono == null ? " " : usuario.telefono;
+
     let usuariohtml =
       "<tr><td>" +
       usuario.id +

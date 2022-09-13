@@ -2,10 +2,7 @@ package com.cursojava.curso.models;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
@@ -14,6 +11,7 @@ import javax.persistence.Table;
 public class Usuario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter @Column(name = "id")
     private Long id;
     @Getter @Setter @Column(name = "nombre")
