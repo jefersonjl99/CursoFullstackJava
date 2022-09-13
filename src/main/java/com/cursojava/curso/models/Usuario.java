@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuarios")
 @ToString
+@NoArgsConstructor
 public class Usuario {
 
     @Id
@@ -26,5 +27,12 @@ public class Usuario {
     @Getter @Setter @Column(name = "password")
     private String password;
 
-
+    public Usuario(Long id, String nombre, String apellido, String email, String telefono, String password) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.password = password;
+    }
 }
