@@ -52,7 +52,7 @@ public class UsuarioController {
 
     public boolean validarToken(String token) {
         String uduarioId = jwtUtil.getKey(token);
-        return uduarioId != null;
+        return uduarioId == null;
     }
 
 //    @RequestMapping(value = "usuarios")
