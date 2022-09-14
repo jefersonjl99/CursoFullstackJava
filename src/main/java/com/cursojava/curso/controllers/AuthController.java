@@ -21,9 +21,12 @@ public class AuthController {
 
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
     public String login(@RequestBody Usuario usuario) {
-        if(usuarioDao.obtenerUsuarioPorCredenciales(usuario)){
 
-            return "OK";
+        Usuario usuarioLogueado = usuarioDao.obtenerUsuarioPorCredenciales(usuario);
+        if(usuarioLogueado!=null){
+
+            String tokenjwt = jwtUtil.create(String.valueOf(usuarioLogueado.getId()), usuarioLogueado.getEmail());
+            return tokenjwt;
         }
         return "FAIL";
     }

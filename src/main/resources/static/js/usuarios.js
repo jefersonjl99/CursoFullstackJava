@@ -2,15 +2,24 @@
 $(document).ready(function () {
   cargarUsuarios();
   $("#usuarios").DataTable();
+  actualizarEmailUsuario();
 });
+function actualizarEmailUsuario(){
+  document.getElementById("txt-email-user").outerHTML = localStorage.email;
+}
+
+function getHeader() {
+  return {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: localStorage.token,
+  };
+}
 
 async function cargarUsuarios() {
   const request = await fetch("api/usuarios", {
     method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+    headers: getHeader(),
   });
   const usuarios = await request.json();
 
@@ -50,10 +59,7 @@ async function eliminarUsuario(id) {
   }
   const request = await fetch("api/usuario/" + id, {
     method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+    headers: getHeader(),
   });
 
   location.reload();
